@@ -21,18 +21,27 @@ public class Contact {
 
     public Contact(){}
 
-    public Contact(String firstname, String lastname, String telephone, String city) {
+    public Contact(int id, String firstname, String lastname, String telephone, String city) {
+        this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.telephone = telephone;
         this.city = city;
     }
 
-    public String getName() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFirstname() {
         return firstname;
     }
 
-    public void setName(String name) {
+    public void setFirstname(String name) {
         this.firstname = name;
     }
 
