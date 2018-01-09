@@ -68,4 +68,15 @@ public class Contact {
     public void setCity(String city) {
         this.city = city;
     }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", city='" + city + '\'' +
+                '}';
+    }
 }

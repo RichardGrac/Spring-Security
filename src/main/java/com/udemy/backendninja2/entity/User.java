@@ -16,7 +16,7 @@ public class User {
     private String password;
 
     @Column(name = "enabled", nullable = false)
-    private boolean enabled; //Indicará si el usuario está activo
+    private boolean enabled;                                 //Indicará si el usuario está activo
 
     //Es una relación Una a varias (puede tener muchos roles)
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
@@ -68,5 +68,15 @@ public class User {
 
     public void setUserRole(Set<UserRole> userRole) {
         this.userRole = userRole;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", enabled=" + enabled +
+                ", userRole=" + userRole +
+                '}';
     }
 }

@@ -57,5 +57,4 @@ public class ContactServiceImpl implements ContactService{
             contactRepository.delete(contact);
         }
     }
-
 }
