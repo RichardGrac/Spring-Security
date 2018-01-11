@@ -1,4 +1,4 @@
-package com.udemy.backendninja2.component;
+package com.udemy.backendninja2.converter;
 
 import com.udemy.backendninja2.entity.Contact;
 import com.udemy.backendninja2.model.ContactModel;

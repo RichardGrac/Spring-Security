@@ -8,6 +8,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -28,8 +31,9 @@ public class ContactController {
         return "redirect:/contacts/showcontacts";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/contactform")
-    private String redirectContactForm(@RequestParam(name = "id", required = false) int id, Model model){
+    public String redirectContactForm(@RequestParam(name = "id", required = false) int id, Model model){
         ContactModel contactModel = new ContactModel();
         if (id != 0){ //Si venimos de presiónar el Boton de Editar, buscamos por Id:
             contactModel = contactService.findContactByIdModel(id);
@@ -59,6 +63,11 @@ public class ContactController {
     @GetMapping("/showcontacts")
     public ModelAndView showContacts(){
         ModelAndView mav = new ModelAndView(ViewConstant.CONTACTS);
+
+        // Con esto obtenemos el usuario actualmente autenticado:
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        mav.addObject("username", user.getUsername());
+
         // En el each del HTML se recorrerá el "contacts"
         mav.addObject("contacts", contactService.listAllContacts());
         return mav;
