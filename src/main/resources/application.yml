@@ -4,7 +4,7 @@ spring:
     username: root
     password: admin
   jpa:
-    show-sql: true # Que nos muestre el sql en pantalla (En el Log las diferentes Queries)
+    show-sql: false # Que nos muestre el sql en pantalla (En el Log las diferentes Queries)
     hibernate:
       # Cuando arranquemos el servidor comprobará si las Entidades corresponden con las tablas, sino las actualiza.
       ddl-auto: update

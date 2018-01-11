@@ -31,18 +31,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     // Lo vamos a sobreescribir para la configuración
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        /*.antMatchers("/contacts/contactform").hasRole("ADMIN")*/
         http.authorizeRequests()
                 .antMatchers("/css/*", "/imgs/*").permitAll()
+
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").loginProcessingUrl("/logincheck")
                 .usernameParameter("username").passwordParameter("password")
                 .defaultSuccessUrl("/loginsuccess").permitAll()
                 .and()
-                .logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout").permitAll();
+                .logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout")
+                .permitAll();
 
         //Usamos el objeto http
-        // .antMatchers(): índicamos las Request autorizadas sin la necesidad de un login
+        /* .antMatchers().permitAll(): índicamos las Request autorizadas sin la necesidad de un login
+            o con .hasRole("ROLE") para permitirselo solo a ese ROL */
         // .anyRequest(): el resto de Request, las ponemos con Identificación
         // .and(): añadimos más configuración
         /* .formLogin(): índicamos la url del login page '/login' con la url que lo procesa '/logincheck'

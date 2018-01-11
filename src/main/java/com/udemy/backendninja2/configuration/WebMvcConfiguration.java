@@ -1,6 +1,6 @@
-package com.udemy.backendninja.configuration;
+package com.udemy.backendninja2.configuration;
 
-import com.udemy.backendninja.component.RequestTimeInterceptor;
+import com.udemy.backendninja2.component.RequestTimeInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
