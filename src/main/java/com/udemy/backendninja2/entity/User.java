@@ -19,7 +19,7 @@ public class User {
     private boolean enabled;                                 //Indicará si el usuario está activo
 
     //Es una relación Una a varias (puede tener muchos roles)
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     private Set<UserRole> userRole = new HashSet<UserRole>();
 
     public User() {

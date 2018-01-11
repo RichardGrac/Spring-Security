@@ -14,7 +14,7 @@ public class UserRole {
     @Column(name = "user_role_id", unique = true, nullable = false) //Es único y no puede ser null
     private Integer userRoleId;     //Su id
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "username", nullable = false) //Hace un join con username
     private User user;  //Usuario al que hará referencia
 

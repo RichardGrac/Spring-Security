@@ -29,7 +29,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     // Lo vamos a sobreescribir para la configuración
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // índicamos las Request Autorizadas sin la necesidad de un Login
         http.authorizeRequests()
                 .antMatchers("/css/*", "/imgs/*").permitAll()
                 .anyRequest().authenticated()
